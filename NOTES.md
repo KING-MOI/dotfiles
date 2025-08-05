@@ -6,3 +6,4 @@
 - edge case observed while testing
 - double-check release checklist behavior
 - double-check exit codes behavior
+- considered type narrowing; parked for now
