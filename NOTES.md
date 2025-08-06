@@ -64,3 +64,4 @@
 - double-check the retry path behavior
 - double-check the retry path behavior
 - considered exit codes; parked for now
+- follow up on type narrowing
