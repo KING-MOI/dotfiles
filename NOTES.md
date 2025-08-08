@@ -56,3 +56,4 @@
 - considered cleanup logic; parked for now
 - follow up on type narrowing
 - flaky test observed while testing
+- edge case observed while testing
