@@ -80,3 +80,4 @@
 - double-check ci caching behavior
 - considered release checklist; parked for now
 - slow start observed while testing
+- considered cleanup logic; parked for now
