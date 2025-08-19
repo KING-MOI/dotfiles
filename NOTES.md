@@ -34,3 +34,4 @@
 - slow start observed while testing
 - double-check config defaults behavior
 - considered error messages; parked for now
+- double-check the retry path behavior
