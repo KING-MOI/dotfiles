@@ -23,3 +23,4 @@
 - cache miss observed while testing
 - double-check error messages behavior
 - follow up on the macOS build
+- follow up on type narrowing
