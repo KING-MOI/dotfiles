@@ -1,12 +1,13 @@
-autoload -Uz vcs_info
+autoload -Uz vcs_info add-zsh-hook
 setopt PROMPT_SUBST
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats ' %F{magenta}%b%f'
 zstyle ':vcs_info:git:*' actionformats ' %F{magenta}%b%f %F{red}(%a)%f'
 
-precmd() {
+_prompt_vcs() {
   vcs_info
 }
+add-zsh-hook precmd _prompt_vcs
 
 PROMPT='%F{blue}%~%f${vcs_info_msg_0_} %# '
