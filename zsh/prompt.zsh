@@ -2,8 +2,11 @@ autoload -Uz vcs_info add-zsh-hook
 setopt PROMPT_SUBST
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats ' %F{magenta}%b%f'
-zstyle ':vcs_info:git:*' actionformats ' %F{magenta}%b%f %F{red}(%a)%f'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}*%f'
+zstyle ':vcs_info:git:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:git:*' formats ' %F{magenta}%b%f%u%c'
+zstyle ':vcs_info:git:*' actionformats ' %F{magenta}%b%f%u%c %F{red}(%a)%f'
 
 _prompt_vcs() {
   vcs_info
