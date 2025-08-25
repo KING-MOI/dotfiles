@@ -7,3 +7,4 @@
 - double-check release checklist behavior
 - double-check exit codes behavior
 - considered type narrowing; parked for now
+- double-check cleanup logic behavior
