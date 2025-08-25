@@ -13,4 +13,4 @@ _prompt_vcs() {
 }
 add-zsh-hook precmd _prompt_vcs
 
-PROMPT='%F{blue}%~%f${vcs_info_msg_0_} %# '
+PROMPT='%F{blue}%~%f${vcs_info_msg_0_} %(?.%F{green}.%F{red})%#%f '
