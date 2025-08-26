@@ -13,4 +13,28 @@ _prompt_vcs() {
 }
 add-zsh-hook precmd _prompt_vcs
 
-PROMPT='%F{blue}%~%f${vcs_info_msg_0_} %(?.%F{green}.%F{red})%#%f '
+typeset -g _prompt_cmd_start
+typeset -g _prompt_elapsed
+
+_prompt_preexec() {
+  _prompt_cmd_start=$EPOCHSECONDS
+}
+
+_prompt_duration() {
+  _prompt_elapsed=
+  [[ -n $_prompt_cmd_start ]] || return
+  local secs=$(( EPOCHSECONDS - _prompt_cmd_start ))
+  _prompt_cmd_start=
+  (( secs >= 3 )) || return
+  if (( secs >= 60 )); then
+    _prompt_elapsed=" %F{yellow}$(( secs / 60 ))m$(( secs % 60 ))s%f"
+  else
+    _prompt_elapsed=" %F{yellow}${secs}s%f"
+  fi
+}
+
+zmodload zsh/datetime
+add-zsh-hook preexec _prompt_preexec
+add-zsh-hook precmd _prompt_duration
+
+PROMPT='%F{blue}%~%f${vcs_info_msg_0_}${_prompt_elapsed} %(?.%F{green}.%F{red})%#%f '
