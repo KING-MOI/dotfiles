@@ -37,4 +37,4 @@ zmodload zsh/datetime
 add-zsh-hook preexec _prompt_preexec
 add-zsh-hook precmd _prompt_duration
 
-PROMPT='%F{blue}%~%f${vcs_info_msg_0_}${_prompt_elapsed} %(?.%F{green}.%F{red})%#%f '
+PROMPT='${SSH_CONNECTION:+%F{cyan\}%n@%m%f }%F{blue}%~%f${vcs_info_msg_0_}${_prompt_elapsed} %(?.%F{green}.%F{red})%#%f '
