@@ -1,0 +1,23 @@
+ZSH_PLUGIN_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/plugins"
+
+plug() {
+  local repo=$1 name=${1:t}
+  local dir="$ZSH_PLUGIN_DIR/$name"
+  if [[ ! -d $dir ]]; then
+    command -v git >/dev/null || return 1
+    echo "plug: installing $repo"
+    git clone --depth 1 --quiet "https://github.com/$repo.git" "$dir" || return 1
+  fi
+  local init
+  for init in "$dir/$name.plugin.zsh" "$dir/$name.zsh"; do
+    if [[ -f $init ]]; then
+      source "$init"
+      return
+    fi
+  done
+  echo "plug: no init file found for $repo" >&2
+  return 1
+}
+
+plug zsh-users/zsh-autosuggestions
+plug zsh-users/zsh-syntax-highlighting
