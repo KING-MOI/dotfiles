@@ -21,3 +21,11 @@ plug() {
 
 plug zsh-users/zsh-autosuggestions
 plug zsh-users/zsh-syntax-highlighting
+
+plug-update() {
+  local dir
+  for dir in "$ZSH_PLUGIN_DIR"/*(N/); do
+    echo "updating ${dir:t}"
+    git -C "$dir" pull --ff-only --quiet
+  done
+}
