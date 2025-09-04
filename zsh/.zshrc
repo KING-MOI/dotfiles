@@ -3,7 +3,7 @@
 export DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 ZSH_CONFIG="$DOTFILES/zsh"
 
-for file in "$ZSH_CONFIG"/*.zsh(N); do
-  source "$file"
+for module in exports path history completion keybinds aliases functions prompt plugins; do
+  [[ -f "$ZSH_CONFIG/$module.zsh" ]] && source "$ZSH_CONFIG/$module.zsh"
 done
-unset file
+unset module
