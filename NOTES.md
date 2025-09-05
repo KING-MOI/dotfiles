@@ -48,3 +48,4 @@
 - flaky test observed while testing
 - double-check ci caching behavior
 - considered the retry path; parked for now
+- follow up on the macOS build
