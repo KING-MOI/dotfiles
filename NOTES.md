@@ -15,3 +15,4 @@
 - follow up on the macOS build
 - double-check config defaults behavior
 - considered release checklist; parked for now
+- considered config defaults; parked for now
