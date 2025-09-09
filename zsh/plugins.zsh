@@ -29,3 +29,7 @@ plug-update() {
     git -C "$dir" pull --ff-only --quiet
   done
 }
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+bindkey '^ ' autosuggest-accept
