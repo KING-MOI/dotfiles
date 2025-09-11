@@ -19,8 +19,10 @@ plug() {
   return 1
 }
 
-plug zsh-users/zsh-autosuggestions
-plug zsh-users/zsh-syntax-highlighting
+if [[ -z $DOTFILES_NO_PLUGINS ]]; then
+  plug zsh-users/zsh-autosuggestions
+  plug zsh-users/zsh-syntax-highlighting
+fi
 
 plug-update() {
   local dir
