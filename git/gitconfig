@@ -1,0 +1,31 @@
+[core]
+	editor = nvim
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[diff]
+	algorithm = histogram
+	colorMoved = default
+
+[rebase]
+	autoStash = true
+	autoSquash = true
+
+[color]
+	ui = auto
