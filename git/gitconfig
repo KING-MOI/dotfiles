@@ -43,3 +43,6 @@
 	undo = reset --soft HEAD~1
 	wip = !git add -A && git commit -m wip --no-verify
 	aliases = !git config --get-regexp '^alias\\.' | sed 's/^alias\\.//'
+
+[include]
+	path = ~/.gitconfig.local
