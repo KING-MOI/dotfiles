@@ -2,6 +2,7 @@
 	editor = nvim
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.config/git/ignore
 
 [init]
 	defaultBranch = main
