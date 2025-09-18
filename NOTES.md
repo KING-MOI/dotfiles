@@ -19,3 +19,4 @@
 - double-check link checker behavior
 - edge case observed while testing
 - follow up on the retry path
+- follow up on error messages
