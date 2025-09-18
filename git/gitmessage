@@ -1,0 +1,6 @@
+
+
+# <type>(<scope>): <summary>
+#
+# types: feat fix docs refactor test chore perf ci
+# keep the summary under 72 chars, lowercase, no period

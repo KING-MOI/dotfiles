@@ -4,6 +4,10 @@
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.config/git/ignore
 
+[commit]
+	template = ~/.config/git/message
+	verbose = true
+
 [init]
 	defaultBranch = main
 
