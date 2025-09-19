@@ -1,5 +1,6 @@
 [core]
 	editor = nvim
+	pager = command -v delta >/dev/null && delta || less -FRX
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.config/git/ignore
@@ -31,6 +32,14 @@
 [rebase]
 	autoStash = true
 	autoSquash = true
+
+[interactive]
+	diffFilter = command -v delta >/dev/null && delta --color-only || cat
+
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = false
 
 [color]
 	ui = auto
