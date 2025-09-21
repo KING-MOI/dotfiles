@@ -100,3 +100,4 @@
 - considered error messages; parked for now
 - double-check the retry path behavior
 - follow up on error messages
+- double-check link checker behavior
