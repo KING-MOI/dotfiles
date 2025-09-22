@@ -4,3 +4,4 @@
 - considered cleanup logic; parked for now
 - flaky test observed while testing
 - edge case observed while testing
+- double-check release checklist behavior
