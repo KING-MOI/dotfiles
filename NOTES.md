@@ -28,3 +28,4 @@
 - flaky test observed while testing
 - double-check exit codes behavior
 - follow up on docs example
+- follow up on cleanup logic
