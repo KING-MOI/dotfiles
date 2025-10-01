@@ -87,3 +87,4 @@
 - edge case observed while testing
 - considered link checker; parked for now
 - follow up on config defaults
+- double-check the retry path behavior
