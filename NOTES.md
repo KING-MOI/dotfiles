@@ -73,3 +73,4 @@
 - double-check link checker behavior
 - follow up on type narrowing
 - double-check ci caching behavior
+- double-check the retry path behavior
