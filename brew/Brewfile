@@ -1,0 +1,12 @@
+tap "homebrew/bundle"
+
+brew "git"
+brew "zsh"
+brew "tmux"
+brew "neovim"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "jq"
+brew "wget"
+brew "coreutils"
