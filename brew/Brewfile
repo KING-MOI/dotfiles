@@ -25,3 +25,8 @@ brew "pnpm"
 brew "uv"
 brew "python@3.12"
 brew "rustup"
+
+brew "shellcheck"
+brew "shfmt"
+brew "stylua"
+brew "lua-language-server"
