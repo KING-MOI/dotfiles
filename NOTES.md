@@ -54,3 +54,4 @@
 - considered config defaults; parked for now
 - considered type narrowing; parked for now
 - considered cleanup logic; parked for now
+- follow up on type narrowing
