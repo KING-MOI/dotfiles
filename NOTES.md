@@ -53,3 +53,4 @@
 - follow up on the retry path
 - considered config defaults; parked for now
 - considered type narrowing; parked for now
+- considered cleanup logic; parked for now
