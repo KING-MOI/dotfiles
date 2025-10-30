@@ -1,1 +1,2 @@
 - double-check type narrowing behavior
+- follow up on cleanup logic
