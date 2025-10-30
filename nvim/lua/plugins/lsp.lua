@@ -25,6 +25,19 @@ return {
           },
         },
       })
+      vim.lsp.config("vtsls", {
+        settings = {
+          typescript = {
+            inlayHints = {
+              parameterNames = { enabled = "literals" },
+              variableTypes = { enabled = false },
+              functionLikeReturnTypes = { enabled = true },
+            },
+            updateImportsOnFileMove = { enabled = "always" },
+          },
+          vtsls = { autoUseWorkspaceTsdk = true },
+        },
+      })
       require("mason-lspconfig").setup(opts)
     end,
   },
