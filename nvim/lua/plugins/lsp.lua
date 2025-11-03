@@ -38,6 +38,19 @@ return {
           vtsls = { autoUseWorkspaceTsdk = true },
         },
       })
+      vim.lsp.config("basedpyright", {
+        settings = {
+          basedpyright = {
+            disableOrganizeImports = true,
+            analysis = { typeCheckingMode = "standard" },
+          },
+        },
+      })
+      vim.lsp.config("ruff", {
+        on_attach = function(client)
+          client.server_capabilities.hoverProvider = false
+        end,
+      })
       require("mason-lspconfig").setup(opts)
     end,
   },
