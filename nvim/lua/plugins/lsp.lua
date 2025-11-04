@@ -13,7 +13,7 @@ return {
     },
     opts = {
       ensure_installed = { "lua_ls", "vtsls", "basedpyright", "ruff" },
-      automatic_enable = true,
+      automatic_enable = { exclude = { "rust_analyzer" } },
     },
     config = function(_, opts)
       vim.lsp.config("lua_ls", {
