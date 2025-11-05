@@ -5,3 +5,4 @@
 - flaky test observed while testing
 - edge case observed while testing
 - double-check release checklist behavior
+- double-check exit codes behavior
