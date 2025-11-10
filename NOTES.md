@@ -16,3 +16,4 @@
 - double-check config defaults behavior
 - considered release checklist; parked for now
 - considered config defaults; parked for now
+- double-check link checker behavior
