@@ -69,3 +69,4 @@
 - double-check the macOS build behavior
 - considered docs example; parked for now
 - follow up on link checker
+- double-check docs example behavior
