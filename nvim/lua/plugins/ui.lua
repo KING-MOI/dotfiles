@@ -17,4 +17,17 @@ return {
       },
     },
   },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      preset = "helix",
+      spec = {
+        { "<leader>c", group = "code" },
+        { "<leader>f", group = "find" },
+        { "<leader>h", group = "hunks" },
+        { "<leader>x", group = "diagnostics" },
+      },
+    },
+  },
 }
