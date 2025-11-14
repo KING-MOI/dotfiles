@@ -47,3 +47,4 @@
 - considered error messages; parked for now
 - flaky test observed while testing
 - double-check ci caching behavior
+- considered the retry path; parked for now
