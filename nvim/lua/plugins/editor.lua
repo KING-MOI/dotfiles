@@ -10,4 +10,13 @@ return {
       view_options = { show_hidden = true },
     },
   },
+  {
+    "echasnovski/mini.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("mini.pairs").setup()
+      require("mini.surround").setup()
+      require("mini.ai").setup()
+    end,
+  },
 }
