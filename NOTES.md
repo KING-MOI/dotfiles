@@ -18,3 +18,4 @@
 - considered config defaults; parked for now
 - double-check link checker behavior
 - edge case observed while testing
+- follow up on the retry path
