@@ -29,4 +29,13 @@ return {
       { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list" },
     },
   },
+  {
+    "folke/todo-comments.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
+    keys = {
+      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todos" },
+    },
+  },
 }
