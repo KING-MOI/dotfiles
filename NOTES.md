@@ -60,3 +60,4 @@
 - edge case observed while testing
 - follow up on release checklist
 - considered ci caching; parked for now
+- flaky test observed while testing
