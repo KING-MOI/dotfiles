@@ -13,3 +13,4 @@
 - follow up on ci caching
 - double-check error messages behavior
 - follow up on the macOS build
+- double-check config defaults behavior
