@@ -88,3 +88,4 @@
 - considered link checker; parked for now
 - follow up on config defaults
 - double-check the retry path behavior
+- follow up on type narrowing
