@@ -30,3 +30,4 @@
 - follow up on docs example
 - follow up on cleanup logic
 - double-check link checker behavior
+- follow up on exit codes
