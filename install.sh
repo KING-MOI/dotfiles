@@ -16,6 +16,10 @@ nvim .config/nvim
 
 link_one() {
   local src="$DOTFILES_DIR/$1" dest="$HOME/$2"
+  if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
+    echo "already linked $2"
+    return
+  fi
   if [ -e "$dest" ] || [ -L "$dest" ]; then
     mkdir -p "$BACKUP_DIR/$(dirname "$2")"
     mv "$dest" "$BACKUP_DIR/$2"
