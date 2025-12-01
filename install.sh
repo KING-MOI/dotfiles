@@ -15,6 +15,17 @@ tmux/tmux.conf .tmux.conf
 nvim .config/nvim
 "
 
+if [ -t 1 ] && [ -z "${NO_COLOR:-}" ]; then
+  BOLD=$'\033[1m' GREEN=$'\033[32m' YELLOW=$'\033[33m' RED=$'\033[31m' RESET=$'\033[0m'
+else
+  BOLD="" GREEN="" YELLOW="" RED="" RESET=""
+fi
+
+info() { printf '%s==>%s %s\n' "$BOLD" "$RESET" "$*"; }
+ok() { printf '%s  ok%s %s\n' "$GREEN" "$RESET" "$*"; }
+warn() { printf '%swarn%s %s\n' "$YELLOW" "$RESET" "$*"; }
+die() { printf '%s err%s %s\n' "$RED" "$RESET" "$*" >&2; exit 1; }
+
 usage() {
   cat <<USAGE
 usage: install.sh [options]
@@ -38,28 +49,29 @@ run() {
 link_one() {
   local src="$DOTFILES_DIR/$1" dest="$HOME/$2"
   if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
-    echo "already linked $2"
+    ok "already linked $2"
     return
   fi
   if [ -e "$dest" ] || [ -L "$dest" ]; then
     run mkdir -p "$BACKUP_DIR/$(dirname "$2")"
     run mv "$dest" "$BACKUP_DIR/$2"
-    echo "backed up $2 to $BACKUP_DIR"
+    warn "backed up $2 to $BACKUP_DIR"
   fi
   run mkdir -p "$(dirname "$dest")"
   run ln -s "$src" "$dest"
-  echo "linked $2"
+  ok "linked $2"
 }
 
 while [ $# -gt 0 ]; do
   case "$1" in
     -n|--dry-run) DRY_RUN=1 ;;
     -h|--help) usage; exit 0 ;;
-    *) echo "unknown option: $1" >&2; usage >&2; exit 2 ;;
+    *) usage >&2; die "unknown option: $1" ;;
   esac
   shift
 done
 
+info "linking dotfiles from $DOTFILES_DIR"
 while read -r src dest; do
   [ -n "$src" ] || continue
   link_one "$src" "$dest"
