@@ -4,6 +4,7 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKUP_DIR="${BACKUP_DIR:-$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)}"
 DRY_RUN=0
+MODE=install
 
 LINKS="
 zsh/.zshrc .zshrc
@@ -33,6 +34,7 @@ usage: install.sh [options]
 Symlink dotfiles from $DOTFILES_DIR into \$HOME.
 
 options:
+  -u, --uninstall remove links that point into this repo
   -n, --dry-run   print what would happen without touching anything
   -h, --help      show this help
 USAGE
@@ -62,17 +64,37 @@ link_one() {
   ok "linked $2"
 }
 
+unlink_one() {
+  local src="$DOTFILES_DIR/$1" dest="$HOME/$2"
+  if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
+    run rm "$dest"
+    ok "removed $2"
+  fi
+}
+
 while [ $# -gt 0 ]; do
   case "$1" in
     -n|--dry-run) DRY_RUN=1 ;;
+    -u|--uninstall) MODE=uninstall ;;
     -h|--help) usage; exit 0 ;;
     *) usage >&2; die "unknown option: $1" ;;
   esac
   shift
 done
 
+each_link() {
+  local src dest
+  while read -r src dest; do
+    [ -n "$src" ] || continue
+    "$1" "$src" "$dest"
+  done <<< "$LINKS"
+}
+
+if [ "$MODE" = uninstall ]; then
+  info "removing dotfile links"
+  each_link unlink_one
+  exit 0
+fi
+
 info "linking dotfiles from $DOTFILES_DIR"
-while read -r src dest; do
-  [ -n "$src" ] || continue
-  link_one "$src" "$dest"
-done <<< "$LINKS"
+each_link link_one
