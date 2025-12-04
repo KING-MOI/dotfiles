@@ -34,9 +34,9 @@ usage: install.sh [options]
 Symlink dotfiles from $DOTFILES_DIR into \$HOME.
 
 options:
-  -u, --uninstall remove links that point into this repo
-  -n, --dry-run   print what would happen without touching anything
-  -h, --help      show this help
+  -u, --uninstall  remove links that point into this repo
+  -n, --dry-run    print what would happen without touching anything
+  -h, --help       show this help
 USAGE
 }
 
