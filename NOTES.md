@@ -40,3 +40,4 @@
 - considered the retry path; parked for now
 - considered the macOS build; parked for now
 - considered cleanup logic; parked for now
+- slow start observed while testing
