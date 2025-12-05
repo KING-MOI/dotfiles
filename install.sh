@@ -57,18 +57,18 @@ link_one() {
   if [ -e "$dest" ] || [ -L "$dest" ]; then
     run mkdir -p "$BACKUP_DIR/$(dirname "$2")"
     run mv "$dest" "$BACKUP_DIR/$2"
-    warn "backed up $2 to $BACKUP_DIR"
+    [ "$DRY_RUN" = 1 ] || warn "backed up $2 to $BACKUP_DIR"
   fi
   run mkdir -p "$(dirname "$dest")"
   run ln -s "$src" "$dest"
-  ok "linked $2"
+  [ "$DRY_RUN" = 1 ] || ok "linked $2"
 }
 
 unlink_one() {
   local src="$DOTFILES_DIR/$1" dest="$HOME/$2"
   if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
     run rm "$dest"
-    ok "removed $2"
+    [ "$DRY_RUN" = 1 ] || ok "removed $2"
   fi
 }
 
