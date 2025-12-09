@@ -71,3 +71,4 @@
 - follow up on link checker
 - double-check docs example behavior
 - double-check link checker behavior
+- follow up on type narrowing
