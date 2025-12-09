@@ -65,3 +65,4 @@
 - double-check the retry path behavior
 - considered exit codes; parked for now
 - follow up on type narrowing
+- double-check the macOS build behavior
