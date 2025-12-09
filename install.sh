@@ -64,6 +64,29 @@ link_one() {
   [ "$DRY_RUN" = 1 ] || ok "linked $2"
 }
 
+setup_git_identity() {
+  local file="$HOME/.gitconfig.local"
+  local name="${GIT_AUTHOR_NAME:-}" email="${GIT_AUTHOR_EMAIL:-}"
+  if [ -f "$file" ]; then
+    ok "found $file"
+    return
+  fi
+  if [ -t 0 ]; then
+    [ -n "$name" ] || read -rp "git user.name: " name
+    [ -n "$email" ] || read -rp "git user.email: " email
+  fi
+  if [ -z "$name" ] || [ -z "$email" ]; then
+    warn "no git identity given, skipping $file"
+    return
+  fi
+  if [ "$DRY_RUN" = 1 ]; then
+    echo "  would write $file"
+    return
+  fi
+  printf '[user]\n\tname = %s\n\temail = %s\n' "$name" "$email" > "$file"
+  ok "wrote $file"
+}
+
 unlink_one() {
   local src="$DOTFILES_DIR/$1" dest="$HOME/$2"
   if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
@@ -98,3 +121,6 @@ fi
 
 info "linking dotfiles from $DOTFILES_DIR"
 each_link link_one
+
+info "git identity"
+setup_git_identity
