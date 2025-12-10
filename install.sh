@@ -5,6 +5,7 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKUP_DIR="${BACKUP_DIR:-$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)}"
 DRY_RUN=0
 MODE=install
+WITH_BREW=0
 
 LINKS="
 zsh/.zshrc .zshrc
@@ -34,6 +35,7 @@ usage: install.sh [options]
 Symlink dotfiles from $DOTFILES_DIR into \$HOME.
 
 options:
+  -b, --brew       also run brew bundle against brew/Brewfile
   -u, --uninstall  remove links that point into this repo
   -n, --dry-run    print what would happen without touching anything
   -h, --help       show this help
@@ -87,6 +89,11 @@ setup_git_identity() {
   ok "wrote $file"
 }
 
+brew_bundle() {
+  command -v brew >/dev/null 2>&1 || die "brew not found, install it from https://brew.sh"
+  run brew bundle --file "$DOTFILES_DIR/brew/Brewfile"
+}
+
 unlink_one() {
   local src="$DOTFILES_DIR/$1" dest="$HOME/$2"
   if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
@@ -98,6 +105,7 @@ unlink_one() {
 while [ $# -gt 0 ]; do
   case "$1" in
     -n|--dry-run) DRY_RUN=1 ;;
+    -b|--brew) WITH_BREW=1 ;;
     -u|--uninstall) MODE=uninstall ;;
     -h|--help) usage; exit 0 ;;
     *) usage >&2; die "unknown option: $1" ;;
@@ -117,6 +125,11 @@ if [ "$MODE" = uninstall ]; then
   info "removing dotfile links"
   each_link unlink_one
   exit 0
+fi
+
+if [ "$WITH_BREW" = 1 ]; then
+  info "installing packages from Brewfile"
+  brew_bundle
 fi
 
 info "linking dotfiles from $DOTFILES_DIR"
