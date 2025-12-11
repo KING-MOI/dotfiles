@@ -1,6 +1,6 @@
 # ~/.zshrc
 
-export DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+export DOTFILES="${${(%):-%x}:A:h:h}"
 ZSH_CONFIG="$DOTFILES/zsh"
 
 for module in exports path history completion keybinds aliases functions prompt plugins; do

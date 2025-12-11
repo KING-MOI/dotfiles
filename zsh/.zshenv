@@ -1,2 +1,1 @@
-export DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
-export ZDOTDIR="${ZDOTDIR:-$HOME}"
+export DOTFILES="${${(%):-%x}:A:h:h}"
