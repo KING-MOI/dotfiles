@@ -61,3 +61,4 @@
 - follow up on release checklist
 - considered ci caching; parked for now
 - flaky test observed while testing
+- double-check the retry path behavior
