@@ -52,3 +52,4 @@
 - considered ci caching; parked for now
 - follow up on the retry path
 - considered config defaults; parked for now
+- considered type narrowing; parked for now
