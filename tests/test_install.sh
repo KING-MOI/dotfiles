@@ -16,5 +16,13 @@ test_links_every_file() {
   assert_link "$HOME/.config/nvim" "$REPO_ROOT/nvim"
 }
 
+test_backs_up_existing_files() {
+  echo "old zshrc" > "$HOME/.zshrc"
+  BACKUP_DIR="$HOME/backup" install
+  assert_link "$HOME/.zshrc" "$REPO_ROOT/zsh/.zshrc"
+  assert_eq "$(cat "$HOME/backup/.zshrc")" "old zshrc"
+}
+
 run_test test_links_every_file
+run_test test_backs_up_existing_files
 exit $((FAILURES > 0))
