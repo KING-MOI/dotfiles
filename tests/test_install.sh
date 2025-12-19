@@ -23,6 +23,14 @@ test_backs_up_existing_files() {
   assert_eq "$(cat "$HOME/backup/.zshrc")" "old zshrc"
 }
 
+test_is_idempotent() {
+  install
+  BACKUP_DIR="$HOME/backup" install
+  assert_link "$HOME/.zshrc" "$REPO_ROOT/zsh/.zshrc"
+  assert_missing "$HOME/backup"
+}
+
 run_test test_links_every_file
 run_test test_backs_up_existing_files
+run_test test_is_idempotent
 exit $((FAILURES > 0))
