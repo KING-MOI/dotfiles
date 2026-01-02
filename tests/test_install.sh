@@ -30,7 +30,17 @@ test_is_idempotent() {
   assert_missing "$HOME/backup"
 }
 
+test_dry_run_changes_nothing() {
+  echo "keep me" > "$HOME/.zshrc"
+  install --dry-run
+  assert_eq "$(cat "$HOME/.zshrc")" "keep me"
+  assert_missing "$HOME/.tmux.conf"
+  assert_missing "$HOME/.config"
+  assert_missing "$HOME/.dotfiles-backup"
+}
+
 run_test test_links_every_file
 run_test test_backs_up_existing_files
 run_test test_is_idempotent
+run_test test_dry_run_changes_nothing
 exit $((FAILURES > 0))
