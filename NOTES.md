@@ -84,3 +84,4 @@
 - considered the macOS build; parked for now
 - follow up on ci caching
 - considered link checker; parked for now
+- edge case observed while testing
