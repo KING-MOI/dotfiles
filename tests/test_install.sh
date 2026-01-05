@@ -39,8 +39,18 @@ test_dry_run_changes_nothing() {
   assert_missing "$HOME/.dotfiles-backup"
 }
 
+test_uninstall_removes_only_our_links() {
+  install
+  ln -s /etc/hosts "$HOME/.foreign"
+  install --uninstall
+  assert_missing "$HOME/.zshrc"
+  assert_missing "$HOME/.config/nvim"
+  assert_link "$HOME/.foreign" /etc/hosts
+}
+
 run_test test_links_every_file
 run_test test_backs_up_existing_files
 run_test test_is_idempotent
 run_test test_dry_run_changes_nothing
+run_test test_uninstall_removes_only_our_links
 exit $((FAILURES > 0))
