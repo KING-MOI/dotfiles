@@ -93,3 +93,4 @@
 - double-check docs example behavior
 - flaky test observed while testing
 - double-check docs example behavior
+- considered the macOS build; parked for now
