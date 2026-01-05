@@ -51,3 +51,4 @@
 - follow up on the macOS build
 - considered ci caching; parked for now
 - follow up on the retry path
+- considered config defaults; parked for now
