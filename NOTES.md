@@ -36,3 +36,4 @@
 - considered error messages; parked for now
 - double-check the retry path behavior
 - edge case observed while testing
+- follow up on error messages
