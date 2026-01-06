@@ -48,9 +48,22 @@ test_uninstall_removes_only_our_links() {
   assert_link "$HOME/.foreign" /etc/hosts
 }
 
+test_writes_git_identity_from_env() {
+  GIT_AUTHOR_NAME="Test User" GIT_AUTHOR_EMAIL="test@example.com" install
+  assert_eq "$(cd / && git config user.email)" "test@example.com"
+}
+
+test_keeps_existing_git_identity() {
+  printf '[user]\n\temail = keep@example.com\n' > "$HOME/.gitconfig.local"
+  GIT_AUTHOR_NAME="x" GIT_AUTHOR_EMAIL="x@example.com" install
+  assert_eq "$(cd / && git config user.email)" "keep@example.com"
+}
+
 run_test test_links_every_file
 run_test test_backs_up_existing_files
 run_test test_is_idempotent
 run_test test_dry_run_changes_nothing
 run_test test_uninstall_removes_only_our_links
+run_test test_writes_git_identity_from_env
+run_test test_keeps_existing_git_identity
 exit $((FAILURES > 0))
