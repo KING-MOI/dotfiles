@@ -59,6 +59,13 @@ test_keeps_existing_git_identity() {
   assert_eq "$(cd / && git config user.email)" "keep@example.com"
 }
 
+test_rejects_unknown_flags() {
+  if "$REPO_ROOT/install.sh" --nope >/dev/null 2>&1; then
+    fail "install.sh accepted --nope"
+  fi
+  assert_missing "$HOME/.zshrc"
+}
+
 run_test test_links_every_file
 run_test test_backs_up_existing_files
 run_test test_is_idempotent
@@ -66,4 +73,5 @@ run_test test_dry_run_changes_nothing
 run_test test_uninstall_removes_only_our_links
 run_test test_writes_git_identity_from_env
 run_test test_keeps_existing_git_identity
+run_test test_rejects_unknown_flags
 exit $((FAILURES > 0))
