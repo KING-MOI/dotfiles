@@ -15,11 +15,12 @@ test_zsh_starts_without_errors() {
   assert_eq "$err" "" "interactive zsh wrote to stderr: $err"
 }
 
-test_zsh_starts_without_errors() {
-  "$REPO_ROOT/install.sh" </dev/null >/dev/null
-  local err
-  err="$(cd "$HOME" && env -u ZDOTDIR DOTFILES_NO_PLUGINS=1 zsh -i -c exit 2>&1 >/dev/null)"
-  assert_eq "$err" "" "interactive zsh wrote to stderr: $err"
+test_tmux_conf_loads() {
+  command -v tmux >/dev/null || { echo "    skip: tmux not installed"; return; }
+  local sock="dotfiles-test-$$"
+  tmux -L "$sock" -f /dev/null new-session -d \; source-file "$REPO_ROOT/tmux/tmux.conf" \
+    || fail "tmux.conf failed to load"
+  tmux -L "$sock" kill-server 2>/dev/null
 }
 
 test_tmux_conf_loads() {
@@ -42,5 +43,6 @@ test_brewfile_parses() {
 }
 
 run_test test_zsh_files_parse
+run_test test_tmux_conf_loads
 run_test test_zsh_starts_without_errors
 exit $((FAILURES > 0))
