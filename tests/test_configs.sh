@@ -23,14 +23,6 @@ test_tmux_conf_loads() {
   tmux -L "$sock" kill-server 2>/dev/null
 }
 
-test_tmux_conf_loads() {
-  command -v tmux >/dev/null || { echo "    skip: tmux not installed"; return; }
-  local sock="dotfiles-test-$$"
-  tmux -L "$sock" -f /dev/null new-session -d \; source-file "$REPO_ROOT/tmux/tmux.conf" \
-    || fail "tmux.conf failed to load"
-  tmux -L "$sock" kill-server 2>/dev/null
-}
-
 test_gitconfig_parses() {
   git config -f "$REPO_ROOT/git/gitconfig" --list >/dev/null || fail "gitconfig does not parse"
   git config -f "$REPO_ROOT/git/gitconfig.local.example" --list >/dev/null \
@@ -43,6 +35,8 @@ test_brewfile_parses() {
 }
 
 run_test test_zsh_files_parse
+run_test test_gitconfig_parses
+run_test test_brewfile_parses
 run_test test_tmux_conf_loads
 run_test test_zsh_starts_without_errors
 exit $((FAILURES > 0))
