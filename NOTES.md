@@ -32,3 +32,4 @@
 - double-check link checker behavior
 - follow up on exit codes
 - slow start observed while testing
+- double-check config defaults behavior
