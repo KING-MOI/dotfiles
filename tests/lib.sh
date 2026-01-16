@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export REPO_ROOT
 FAILURES=0
 
 fail() {
@@ -9,7 +10,7 @@ fail() {
 }
 
 assert_eq() {
-  [ "$1" = "$2" ] || fail "${3:-expected '$2', got '$1'}"
+  [ "$1" = "$2" ] || fail "${3:-expected [$2], got [$1]}"
 }
 
 assert_link() {
