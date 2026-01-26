@@ -96,3 +96,4 @@
 - considered the macOS build; parked for now
 - edge case observed while testing
 - follow up on ci caching
+- slow start observed while testing
