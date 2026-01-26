@@ -22,3 +22,15 @@ place are skipped.
 
 On a new Mac, `./install.sh --brew` also installs everything in
 [`brew/Brewfile`](brew/Brewfile).
+
+## What gets linked
+
+| Source | Target |
+| --- | --- |
+| `zsh/.zshrc` | `~/.zshrc` |
+| `zsh/.zshenv` | `~/.zshenv` |
+| `git/gitconfig` | `~/.gitconfig` |
+| `git/gitignore_global` | `~/.config/git/ignore` |
+| `git/gitmessage` | `~/.config/git/message` |
+| `tmux/tmux.conf` | `~/.tmux.conf` |
+| `nvim/` | `~/.config/nvim` |
