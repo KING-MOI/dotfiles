@@ -34,3 +34,12 @@ On a new Mac, `./install.sh --brew` also installs everything in
 | `git/gitmessage` | `~/.config/git/message` |
 | `tmux/tmux.conf` | `~/.tmux.conf` |
 | `nvim/` | `~/.config/nvim` |
+
+## Machine-local settings
+
+Things that differ between machines stay out of the repo:
+
+- `~/.gitconfig.local` holds `user.name` and `user.email`. The installer writes
+  it from `GIT_AUTHOR_NAME` / `GIT_AUTHOR_EMAIL` or asks for them. See
+  [`git/gitconfig.local.example`](git/gitconfig.local.example).
+- `~/.zshrc.local` is sourced last, for work-only aliases, tokens and paths.
