@@ -43,3 +43,20 @@ Things that differ between machines stay out of the repo:
   it from `GIT_AUTHOR_NAME` / `GIT_AUTHOR_EMAIL` or asks for them. See
   [`git/gitconfig.local.example`](git/gitconfig.local.example).
 - `~/.zshrc.local` is sourced last, for work-only aliases, tokens and paths.
+
+## Neovim
+
+Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim), which
+bootstraps itself on first launch. Language support:
+
+| Language | LSP | Formatter |
+| --- | --- | --- |
+| TypeScript / JavaScript | vtsls | prettierd / prettier |
+| Python | basedpyright + ruff | ruff |
+| Rust | rust-analyzer (rustaceanvim) | rustfmt |
+| Lua | lua_ls | stylua |
+
+LSP servers are installed by mason on first use. `rust-analyzer` comes from
+rustup: `rustup component add rust-analyzer`.
+
+Leader is `<space>`. Press it and wait for which-key to show the groups.
