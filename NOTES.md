@@ -78,3 +78,4 @@
 - double-check the retry path behavior
 - cache miss observed while testing
 - double-check ci caching behavior
+- considered release checklist; parked for now
