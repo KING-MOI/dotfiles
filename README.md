@@ -60,3 +60,14 @@ LSP servers are installed by mason on first use. `rust-analyzer` comes from
 rustup: `rustup component add rust-analyzer`.
 
 Leader is `<space>`. Press it and wait for which-key to show the groups.
+
+## Development
+
+```sh
+make test   # install into a temp HOME and check every config loads
+make lint   # shellcheck + stylua --check
+make fmt    # format lua
+```
+
+Tests are plain bash with no dependencies beyond zsh, tmux and git. Each test
+gets a fresh temporary `$HOME`, so they never touch your real files.
