@@ -38,3 +38,4 @@
 - edge case observed while testing
 - follow up on error messages
 - considered the retry path; parked for now
+- considered the macOS build; parked for now
