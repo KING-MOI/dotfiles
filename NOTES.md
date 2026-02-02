@@ -63,3 +63,4 @@
 - flaky test observed while testing
 - double-check the retry path behavior
 - double-check the retry path behavior
+- considered exit codes; parked for now
