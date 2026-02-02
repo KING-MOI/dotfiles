@@ -71,3 +71,7 @@ make fmt    # format lua
 
 Tests are plain bash with no dependencies beyond zsh, tmux and git. Each test
 gets a fresh temporary `$HOME`, so they never touch your real files.
+
+## License
+
+[MIT](LICENSE)
