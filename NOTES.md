@@ -58,3 +58,4 @@
 - flaky test observed while testing
 - edge case observed while testing
 - edge case observed while testing
+- follow up on release checklist
