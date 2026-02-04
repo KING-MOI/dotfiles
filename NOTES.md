@@ -81,3 +81,4 @@
 - considered release checklist; parked for now
 - slow start observed while testing
 - considered cleanup logic; parked for now
+- considered the macOS build; parked for now
