@@ -7,3 +7,7 @@ if (( $+commands[fzf] )); then
   fi
   export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 fi
+
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
