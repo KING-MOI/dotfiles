@@ -90,3 +90,4 @@
 - double-check the retry path behavior
 - follow up on type narrowing
 - double-check ci caching behavior
+- double-check docs example behavior
