@@ -31,3 +31,15 @@ alias gp='git push'
 alias gpl='git pull --rebase'
 alias gst='git stash'
 alias gstp='git stash pop'
+
+if (( $+commands[eza] )); then
+  alias ls='eza --group-directories-first'
+  alias l='eza -la --git --group-directories-first'
+  alias ll='eza -l --git --group-directories-first'
+  alias lt='eza --tree --level=2 --git-ignore'
+fi
+
+if (( $+commands[bat] )); then
+  alias cat='bat --paging=never'
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
