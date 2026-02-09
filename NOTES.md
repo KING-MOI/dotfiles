@@ -37,3 +37,4 @@
 - double-check the retry path behavior
 - edge case observed while testing
 - follow up on error messages
+- considered the retry path; parked for now
