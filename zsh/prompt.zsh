@@ -40,7 +40,10 @@ add-zsh-hook precmd _prompt_duration
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 _prompt_venv() {
-  [[ -n $VIRTUAL_ENV ]] && print -n " %F{green}(${VIRTUAL_ENV:t})%f"
+  [[ -n $VIRTUAL_ENV ]] || return
+  local name=${VIRTUAL_ENV:t}
+  [[ $name == .venv || $name == venv ]] && name=${VIRTUAL_ENV:h:t}
+  print -n " %F{green}(${name})%f"
 }
 
 typeset -g _prompt_host=
