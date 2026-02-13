@@ -19,3 +19,18 @@ extract() {
     *) echo "extract: unknown archive '$1'" >&2; return 1 ;;
   esac
 }
+
+port() {
+  if [[ -z $1 ]]; then
+    echo "usage: port <number>" >&2
+    return 1
+  fi
+  lsof -nP -iTCP:"$1" -sTCP:LISTEN
+}
+
+fbr() {
+  local branch
+  branch=$(git branch --all --sort=-committerdate --format='%(refname:short)' |
+    grep -v HEAD | fzf --prompt 'branch> ') || return
+  git switch "${branch#origin/}"
+}
