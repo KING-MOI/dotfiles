@@ -1,0 +1,7 @@
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt INTERACTIVE_COMMENTS
+setopt NO_BEEP
+setopt EXTENDED_GLOB
