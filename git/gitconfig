@@ -29,6 +29,9 @@
 	algorithm = histogram
 	colorMoved = default
 
+[rerere]
+	enabled = true
+
 [rebase]
 	autoStash = true
 	autoSquash = true
