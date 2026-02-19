@@ -44,6 +44,15 @@
 	line-numbers = true
 	side-by-side = false
 
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[help]
+	autocorrect = prompt
+
 [color]
 	ui = auto
 
