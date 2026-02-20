@@ -21,6 +21,10 @@
 
 [fetch]
 	prune = true
+	pruneTags = true
+
+[transfer]
+	fsckObjects = true
 
 [merge]
 	conflictstyle = zdiff3
