@@ -2,7 +2,8 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BACKUP_DIR="${BACKUP_DIR:-$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)}"
+BACKUP_ROOT="${BACKUP_ROOT:-$HOME/.dotfiles-backup}"
+BACKUP_DIR="${BACKUP_DIR:-$BACKUP_ROOT/$(date +%Y%m%d-%H%M%S)}"
 DRY_RUN=0
 MODE=install
 WITH_BREW=0
@@ -36,7 +37,8 @@ Symlink dotfiles from $DOTFILES_DIR into \$HOME.
 
 options:
   -b, --brew       also run brew bundle against brew/Brewfile
-  -u, --uninstall  remove links that point into this repo
+  -u, --uninstall  remove links that point into this repo and restore
+                   the newest backup of each file, if any
   -n, --dry-run    print what would happen without touching anything
   -h, --help       show this help
 USAGE
@@ -99,7 +101,20 @@ unlink_one() {
   if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
     run rm "$dest"
     [ "$DRY_RUN" = 1 ] || ok "removed $2"
+    restore_backup "$2"
   fi
+}
+
+restore_backup() {
+  local dir backup=""
+  for dir in "$BACKUP_ROOT"/*/; do
+    if [ -e "$dir$1" ] || [ -L "$dir$1" ]; then
+      backup="$dir$1"
+    fi
+  done
+  [ -n "$backup" ] || return 0
+  run mv "$backup" "$HOME/$1"
+  [ "$DRY_RUN" = 1 ] || ok "restored $1 from ${backup%/"$1"}"
 }
 
 while [ $# -gt 0 ]; do

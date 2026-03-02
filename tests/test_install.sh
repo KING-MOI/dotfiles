@@ -66,6 +66,16 @@ test_rejects_unknown_flags() {
   assert_missing "$HOME/.zshrc"
 }
 
+test_uninstall_restores_newest_backup() {
+  mkdir -p "$HOME/.dotfiles-backup/20200101-000000" "$HOME/.dotfiles-backup/20250101-000000"
+  echo older > "$HOME/.dotfiles-backup/20200101-000000/.tmux.conf"
+  echo newer > "$HOME/.dotfiles-backup/20250101-000000/.tmux.conf"
+  install
+  install --uninstall
+  assert_eq "$(cat "$HOME/.tmux.conf")" "newer"
+  assert_missing "$HOME/.zshrc"
+}
+
 run_test test_links_every_file
 run_test test_backs_up_existing_files
 run_test test_is_idempotent
@@ -74,4 +84,5 @@ run_test test_uninstall_removes_only_our_links
 run_test test_writes_git_identity_from_env
 run_test test_keeps_existing_git_identity
 run_test test_rejects_unknown_flags
+run_test test_uninstall_restores_newest_backup
 exit $((FAILURES > 0))
