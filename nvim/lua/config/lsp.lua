@@ -11,6 +11,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("K", vim.lsp.buf.hover, "Hover")
     map("<leader>rn", vim.lsp.buf.rename, "Rename")
     map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+    map("<leader>ci", function()
+      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
+      vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
+    end, "Toggle inlay hints")
   end,
 })
 
