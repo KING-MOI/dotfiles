@@ -38,3 +38,18 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: latest
           args: --check nvim
+
+  nvim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable
+      - name: link config
+        run: ./install.sh </dev/null
+      - name: install plugins and start headless
+        run: |
+          nvim --headless "+Lazy! sync" +qa 2>&1 | tee nvim.log
+          if grep -qiE 'error|E[0-9]+:' nvim.log; then exit 1; fi
