@@ -1,4 +1,4 @@
-.PHONY: install uninstall dry-run test lint fmt
+.PHONY: install uninstall dry-run brew test lint fmt
 
 SHELL_FILES := install.sh tests/*.sh
 
@@ -10,6 +10,9 @@ uninstall:
 
 dry-run:
 	./install.sh --dry-run
+
+brew:
+	brew bundle --file brew/Brewfile
 
 test:
 	./tests/run.sh
