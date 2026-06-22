@@ -1,4 +1,7 @@
-.PHONY: install uninstall dry-run brew test lint fmt
+help:
+	@grep -E '^[a-z-]+:' Makefile | cut -d: -f1 | grep -v '^help$$'
+
+.PHONY: help install uninstall dry-run brew test lint fmt
 
 SHELL_FILES := install.sh tests/*.sh
 
