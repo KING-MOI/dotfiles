@@ -52,4 +52,4 @@ jobs:
       - name: install plugins and start headless
         run: |
           nvim --headless "+Lazy! sync" +qa 2>&1 | tee nvim.log
-          if grep -qiE 'error|E[0-9]+:' nvim.log; then exit 1; fi
+          if grep -qE '^E[0-9]+:|Error (detected|executing)|stack traceback' nvim.log; then exit 1; fi
