@@ -72,6 +72,22 @@ make fmt    # format lua
 Tests are plain bash with no dependencies beyond zsh, tmux and git. Each test
 gets a fresh temporary `$HOME`, so they never touch your real files.
 
+## Keybindings worth knowing
+
+| Where | Keys | Does |
+| --- | --- | --- |
+| zsh | `Ctrl-Space` | accept autosuggestion |
+| zsh | `Ctrl-X Ctrl-E` | edit command in `$EDITOR` |
+| zsh | `Ctrl-R` / `Ctrl-T` | fzf history / file search |
+| tmux | `Ctrl-A` | prefix |
+| tmux | `prefix \|` / `prefix -` | split right / below in current dir |
+| tmux | `prefix g` | lazygit popup |
+| tmux | `Alt-h` / `Alt-l` | previous / next window |
+| nvim | `<space><space>` | find files |
+| nvim | `<space>fg` | live grep |
+| nvim | `-` | open parent directory (oil) |
+| nvim | `<space>cf` | format buffer |
+
 ## License
 
 [MIT](LICENSE)
