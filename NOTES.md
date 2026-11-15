@@ -102,3 +102,4 @@
 - follow up on error messages
 - double-check link checker behavior
 - slow start while testing
+- double-check slow start behavior
