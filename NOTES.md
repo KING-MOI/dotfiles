@@ -103,3 +103,4 @@
 - double-check link checker behavior
 - slow start while testing
 - double-check slow start behavior
+- considered docs example; parked for now
